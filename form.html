@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script language="javascript">
+        function Affichage() {
+            if (ouiCertif.checked)
+                certificat.style.display = "block";
+            else
+                certificat.style.display = "none";
+            if (ouiLicence.checked)
+                licence.style.display = "block";
+            else
+                licence.style.display = "none";
+            if (ouiPhoto.checked)
+                photo.style.display = "block";
+            else
+                photo.style.display = "none";
+        }
+    </script>
+    <title>Adhésion</title>
+</head>
+
+<body>
+    <form id="formulaire" name="formulaire" method="post" action="adhesion.php">
+        <fieldset>
+            <legend>Vos coordonnées</legend>
+            <table>
+                <tr>
+                    <td>
+                        Nom du responsable légal :
+                    </td>
+                    <td>
+                        <input type="text" name="nomRespLegal" placeholder="Robert Dupont" maxlength="70" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Adresse :
+                    </td>
+                    <td>
+                        <input type="text" name="adresse" placeholder="Exemple : 6 rue des Champs Elysées"
+                            maxlength="256" style="width:300px;" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Code postal :
+                    </td>
+                    <td>
+                        <input type="text" name="cp" placeholder="Exemple : 75000" maxlength="5" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Ville :
+                    </td>
+                    <td>
+                        <input type="text" name="ville" placeholder="PARIS" maxlength="30" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Numéro de téléphone :
+                    </td>
+                    <td>
+                        <input type="tel" name="tel" placeholder="Exemple : 0123456789" maxlength="10" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        E-mail :
+                    </td>
+                    <td>
+                        <input type="email" name="mail" placeholder="email@exemple.fr" maxlength="100" required>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <fieldset>
+            <legend>Coordonnées de l'adhérent</legend>
+            <table>
+                <tr>
+                    <td>
+                        Nom :
+                    </td>
+                    <td>
+                        <input type="text" name="nomAdh" placeholder="Smith" maxlength="30" required>
+                    </td>
+                    <td>
+                        Prénom :
+                    </td>
+                    <td>
+                        <input type="text" name="prenomAdh" placeholder="John" maxlength="30" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Date de naissance :
+                    </td>
+                    <td>
+                        <input type="date" name="dn" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Certificat médical de moins de 3 ans :
+                    </td>
+                    <td>
+                        <input type="radio" name="cert" id="ouiCertif" value="1" onclick="Affichage()"> Oui
+                        <input type="radio" name="cert" id="nonCertif" value="0" onclick="Affichage()"> Non
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="certificat" style="display: none;">
+                            Joindre le certificat :
+                            <input type="file" name="certificat" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Licence :
+                    </td>
+                    <td>
+                        <input type="radio" name="licence" id="ouiLicence" value="1" onclick="Affichage()"> Oui
+                        <input type="radio" name="licence" id="nonLicence" value="0" onclick="Affichage()"> Non
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="licence" style="display: none;">
+                            Informations de licence :
+                            <input type="text" name="ouiLicence" placeholder="Licence" maxlength="30">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Catégorie :
+                    </td>
+                    <td>
+                        <form>
+                            <select size="1" name="categorie" required>
+                                <option selected>-Sélectionner-
+                                <option>Catégorie 1
+                                <option>Catégorie 2
+                                <option>Catégorie 3
+                                <option>Catégorie 4
+                                <option>Catégorie 5
+                            </select>
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Cours :
+                    </td>
+                    <td>
+                        <form>
+                            <select size="1" name="cours" required>
+                                <option selected>-Sélectionner-
+                                <option>Cours 1
+                                <option>Cours 2
+                                <option>Cours 3
+                                <option>Cours 4
+                                <option>Cours 5
+                            </select>
+                        </form>
+                    </td>
+                </tr>
+                <!-- n'afficher les options que si disponibles ! -->
+                <tr>
+                    <td>
+                        Essai :
+                    </td>
+                    <td>
+                        <input type="radio" name="essai" value="1"> Oui
+                        <input type="radio" name="essai" value="0"> Non
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Location de Kimono (5€ + caution 40€) :
+                    </td>
+                    <td>
+                        <input type="radio" name="locKimono" value="1"> Oui
+                        <input type="radio" name="locKimono" value="0"> Non
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Passeport si né en 2013 ou en 2005 ou nouveau pré-judo (9€):
+                    </td>
+                    <td>
+                        <input type="checkbox" name="photoPasseport" id="ouiPhoto" value="photoPasseport" onclick="Affichage()"> Photo
+                        <input type="checkbox" name="chequePreJudo" value="cheque9"> Chèque
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="photo" style="display: none;">
+                            Joindre la photo :
+                            <input type="file" name="photo" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Cotisations :
+                    </td>
+                    <td>
+                        <input type="text" name="cotisations" placeholder="cotisations" maxlength="30" required>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <fieldset>
+            <legend>Réductions</legend>
+            <table>
+                <tr>
+                    <td>
+                        A partir du 2ème adhérent pour 1 entrainement :
+                    </td>
+                    <td>
+                        <input type="radio" name="reducPass" value="-10"> -10€
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        A partir du 2ème adhérent pour 2 entrainements :
+                    </td>
+                    <td>
+                        <input type="radio" name="reducPass" value="-15"> -15€
+                    </td>
+                </tr>
+<!--méthode de calcul nécessaire pour l'insérer dans Montant dû-->
+                <tr>
+                    <td>
+                        Montant dû :
+                    </td>
+                    <td>
+                        <input type="text" name="montantDu" placeholder="0€" maxlength="30" readonly>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <fieldset>
+            <legend>Paiement</legend>
+            <table>
+                <tr>
+                    <td>
+                        Pass'Sport (-15€) :
+                    </td>
+                    <td>
+                        <input type="radio" name="pass" value="1"> Caution
+                        <input type="radio" name="pass" value="0"> Autre
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Pass'Région (-30€) :
+                    </td>
+                    <td>
+                        <input type="radio" name="pass" value="2"> Caution
+                    </td>
+                    <td>
+                        N° <input type="text" name="numeroPass" placeholder="032465895432" maxlength="30">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Mois du paiement :
+                    </td>
+                    <td>
+                        <form>
+                            <select size="1" name="moisPaiement" required>
+                                <option selected>-Sélectionner-
+                                <option>Janvier
+                                <option>Février
+                                <option>Mars
+                                <option>Avril
+                                <option>Mai
+                                <option>Juin
+                                <option>Juillet
+                                <option>Août
+                                <option>Septembre
+                                <option>Octobre
+                                <option>Novembre
+                                <option>Décembre
+                            </select>
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Montant :
+                    </td>
+                    <td>
+                        <input type="text" name="montant" placeholder="0€" maxlength="30" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Nom du payeur (si différent) :
+                    </td>
+                    <td>
+                        <input type="text" name="nomPayeur" placeholder="Robert Dupont" maxlength="30">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Type (chèque, espèce) :
+                    </td>
+                    <td>
+                        <input type="radio" name="paiementChq" value="chequePaiement"> Chèque
+                        <input type="radio" name="paiementEsp" value="especePaiement"> Espèces
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Total :
+                    </td>
+                    <td>
+                        <input type="text" name="total" placeholder="total" maxlength="30" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Remarques :
+                    </td>
+                    <td>
+                        <textarea name="remarques" maxlength="300" rows="4" cols="50"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        ASQ1 :
+                    </td>
+                    <td>
+                        <input type="text" name="ASQ1" placeholder="" maxlength="30" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        ASQ2 :
+                    </td>
+                    <td>
+                        <input type="text" name="ASQ2" placeholder="" maxlength="30" required>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <input type="submit" value="ENVOYER">
+        <input type="reset" value="EFFACER">
+    </form>
+</body>
+
+</html>
