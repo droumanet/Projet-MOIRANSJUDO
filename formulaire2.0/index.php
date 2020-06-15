@@ -12,24 +12,8 @@
 
 <p>Récupérer les données : afficher le récapitulatif (+stocker ?)<br>
 Bouton valider à paufiner : il doit permettre d'accéder au récapitulatif à partir du dernier adhérent <br>
-Mettre les champs adaptés pour chaque catégorie<br>
 Insertion du logo dans le formulaire<br>
-CSS Bootstrap Bulma pour l'apparence (code couleur Moirans Judo & police) de la page d'intro et du formulaire 
-
-    adh : 
-
-Nom, Prénom, sexe, date de naissance.
-o    Réinscription ou nouveau judoka
-o    Couleur de ceinture de la saison précédente.
-o    Certificat médical, pour ce point, se référer au §2.3
-o    Le choix du cours, se référer au §2.4
-o    Pour les mineurs uniquement, il faut faire apparaitre l’autorisation parentale et faire en sorte que 
-l’utilisateur clique sur OUI.
-Le texte est : « Je soussigné représentant légal de l’enfant dont le nom est inscrit ci-dessus autorise mon 
-enfant à participer aux activités de Moirans Judo pour la saison 2020/2021. En cas d’urgence, j'autorise, 
-pour mon enfant, toute intervention médicale qui pourrait s'avérer nécessaire ».
-Pour faire simple, ce doit être la même chose que la célèbre « accepter les conditions générales de vente » 
-que l’on trouve sur les sites marchands.</p>
+CSS Bootstrap Bulma pour l'apparence (code couleur Moirans Judo & police) de la page d'intro et du formulaire. <br>
 
 <div class="tab">
   <button class="tablinks" onclick="openSection(event, 'Resp')" id="defaultOpen">Responsable Légal</button>
