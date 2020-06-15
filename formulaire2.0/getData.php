@@ -4,6 +4,6 @@ $adh =  (string)implode("|",$_POST);
 $file = fopen("test.txt","w");
 fwrite($file, $adh);
 
-$adherents = $_POST["adherents"]
+$connards = $_POST["adherents"]
 
 ?>
