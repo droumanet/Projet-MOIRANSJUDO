@@ -22,7 +22,7 @@ CSS Bootstrap Bulma pour l'apparence (code couleur Moirans Judo & police) de la 
 </div>
 
 <div id="Resp" class="tabcontent">
-    <form id="formulaire">
+    <form id="formulaire" name="formulaire">
         <fieldset>
             <legend>Responsable Légal</legend>
             <table>
@@ -107,13 +107,12 @@ CSS Bootstrap Bulma pour l'apparence (code couleur Moirans Judo & police) de la 
         let adhList = []
         //fichier à part pour la classe
         class adherent {
-            
             constructor(_nom, _prenom, _dn, _certif,_cat,_cours,_kimono,_passeport,_cotisationtotal){
                 this.nom=_nom;
                 this.prenom=_prenom;
                 this.dn=_dn;
                 this.certif=_certif;
-                this.categorie=_cat;
+                this.categorie=_cat; // dans le parseForms()
             }
         }
 //===================================================================== affichage des divers onglets =====================================================================
@@ -153,7 +152,7 @@ CSS Bootstrap Bulma pour l'apparence (code couleur Moirans Judo & police) de la 
             // formulaires
             div_aff.innerHTML +=`
             <div id="Adh${i+1}" class="tabcontent" style="display : none;">
-                <form id="form${i+1}" action="parseForms()"  id="formAdh">
+                <form id="form" method="post" action="getData.php"  id="formAdh">
                     <fieldset>
                         <legend>Adhérent ${i+1}</legend>
                         <table>
@@ -258,7 +257,7 @@ CSS Bootstrap Bulma pour l'apparence (code couleur Moirans Judo & police) de la 
                                     Catégorie : 
                                 </td>
                                 <td>
-                                    <select name="categorie${i+1}" id="categorie${i+1}" onchange="generateCours(this, ${i+1})">
+                                    <select name="categori${i+1}" id="categori${i+1}" onchange="generateCours(this, ${i+1})">
                                         <option value="Prejudo">Pré Judo</option>
                                         <option value="MiniPoussin">Mini Poussin</option>
                                         <option value="Poussin">Poussin</option>
@@ -279,6 +278,7 @@ CSS Bootstrap Bulma pour l'apparence (code couleur Moirans Judo & police) de la 
                             </tr>
                         </table>
                         <input type="button" onclick="openSection(event,'Adh${i+2}')" value="Valider l'Adhérent ${i+1}">
+                        <input type="button" onclick="parseForms()"  value="bouton parse"/>
                     </fieldset>
                 </form>
             </div>
@@ -397,38 +397,50 @@ CSS Bootstrap Bulma pour l'apparence (code couleur Moirans Judo & police) de la 
         }
     }
 // =========================================================================================== stockage des éléments du formulaire =========================================
+// tester écriture sur la base. 
+// séparer les fichiers
+// afficher le recap        
+// voir l'option submit (validation de toutes les parties du formulaire)
 
-        function parseForms(){
-            //Réinitialisation de la liste 
-            let adhList = []
-            console.log("test")
-            //Récupération de tous les objets <Form> dans une liste
-            let forms = document.getElementById("formulaire").children
-            console.log(forms)
-            for (let i = 0; i < forms.length; i++) {
-                //Récupération des balises input dans le form
-                let form = forms[i].getElementsByTagName("input");
-                // Récupération des données contenues dans les input
-                let nom = form[0].value
-                //let prenom = form[1].value
-                //let adresse = form[2].value
-                //let codepostal = form[3].value
-                //let ville = form[4].value
-                //-
-                //Création d'un objet adhérent et ajout dans la liste
-                //,prenom,adresse,ville,codepostal
-                adhList.push(new adherent(nom))
-                console.log("la liste : ")
-                console.log( adhList)
-            }
-            let url = "getData.php";
-            let xhr = new XMLHttpRequest();
-            xhr.open("POST",url,true)
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.send(JSON.stringify({
-                adherents : adhList
-            }));
-            xhr.send("Oui")
+
+// radio : var radios = document.getElementsByName('name');
+// for (var i = 0; i<radios.length; i++) {
+// recup tous les checked etc et les mettre dans forms, ensuite dans adhList : insérer les objets adherent avec les elm correspondants de forms
+//  if (radios[i].checked) {}
+// for i = 0; i<nbadh; i++  // + verif ? 
+    function parseForms(){
+        //Réinitialisation de la liste 
+        let adhList = []
+        console.log("test")
+        //Récupération de tous les objets <Form> dans une liste
+        let forms = document.getElementById(`form`).children
+        console.log(forms)
+        for (let i = 0; i < forms.length; i++) {
+            //Récupération des balises input dans le form
+            let form = forms[i].getElementsByTagName("input");
+            // Récupération des données contenues dans les input
+            let premier = form[0].value 
+            console.log(premier) // 1 : le premier élément du formulaire adhérent avec value="1" : pb pas récup ce qui a été validé / adh ou pas.
+            let second = form[1].value
+            console.log(second) // 0 : second input
+            let troisieme = form[2].value
+            let quatrieme = form[3].value
+            let cinquieme = form[4].value
+            //-
+            //Création d'un objet adhérent et ajout dans la liste
+            //,prenom,adresse,ville,codepostal
+            adhList.push(new adherent(premier, second, troisieme, quatrieme, cinquieme))
+            console.log("la liste : ")
+            console.log( adhList)
         }
+        let url = "getData.php";
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST",url,true)
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify({
+            adherents : adhList
+        }));
+        xhr.send("Oui")
+    }
     </script>
 </html>
