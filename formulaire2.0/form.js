@@ -12,14 +12,15 @@ class resp{
 
 class adherent {
 
-    constructor(_nom, _prenom, _dn, _certif,_cat,_cours,_kimono,_passeport,_cotisationtotal){
-        this.nom=_nom;
-        this.prenom=_prenom;
-        this.dn=_dn;
-        this.certif=_certif;
-        this.categorie=_cat;
-        this.kimono=_kimono;
-        this.passeport=_passeport;
-        this.cotisationtotal=_cotisationtotal;
+    constructor(_majeur, _certif, _nom, _prenom, _sexe, _dn, _etatJudo, _cat, _cours){
+        this.majeur = _majeur;
+        this.certif = _certif;
+        this.nom = _nom;
+        this.prenom = _prenom;
+        this.sexe = _sexe;
+        this.dn= _dn;
+        this.etatJudo = _etatJudo;
+        this.cat = _cat;
+        this.cours = _cours;
     }
 }
